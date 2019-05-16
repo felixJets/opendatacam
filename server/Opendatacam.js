@@ -478,6 +478,9 @@ module.exports = {
     console.log('Send request to connect to YOLO JSON Stream')
     self.HTTPRequestListeningToYOLO = http.request(options, function(res) {
       console.log(`statusCode: ${res.statusCode}`)
+      var message = ""; // variable that collects chunks
+      var separator = "}"; // consider chunk complete if I see this char
+
       res.on('data', function(chunk) {
         var msg = chunk.toString();
         console.log('----')
@@ -502,9 +505,14 @@ module.exports = {
           msg = msg.substr(1);
         }
 
-        if(msg.trim().length > 0) {
+        message += msg;
+        let separatorIndex = message.indexOf(separator);
+        let isMessageComplete = separatorIndex != -1;
+
+        if(isMessageComplete && message.trim().length > 0) {
           try {
             var detectionsOfThisFrame = JSON.parse(msg);
+            message = '';
             self.updateWithNewFrame(detectionsOfThisFrame.objects);
           } catch (error) {
             console.log("Error with msg send by YOLO, not valid JSON")
