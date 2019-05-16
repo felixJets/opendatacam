@@ -150,19 +150,19 @@ module.exports = {
       })
     }
 
-    DBManager.updateRecordingWithNewframe(
-      Opendatacam.recordingStatus.recordingId,
-      frameTimestamp,
-      counterSummary,
-      trackerSummary,
-      countedItemsForThisFrame,
-      trackerEntry
-    ).then(() => {
-      // console.log('success updateRecordingWithNewframe');
-    }, (error) => {
-      console.log(error);
-      console.log('error updateRecordingWithNewframe');
-    })
+    // DBManager.updateRecordingWithNewframe(
+    //   Opendatacam.recordingStatus.recordingId,
+    //   frameTimestamp,
+    //   counterSummary,
+    //   trackerSummary,
+    //   countedItemsForThisFrame,
+    //   trackerEntry
+    // ).then(() => {
+    //   // console.log('success updateRecordingWithNewframe');
+    // }, (error) => {
+    //   console.log(error);
+    //   console.log('error updateRecordingWithNewframe');
+    // })
   },
 
   updateWithNewFrame: function(detectionsOfThisFrame) {
@@ -433,15 +433,15 @@ module.exports = {
     Opendatacam.recordingStatus.dateStarted = new Date();
     Opendatacam.totalItemsTracked = 0;
     // Persist recording
-    DBManager.insertRecording(new Recording(
-      Opendatacam.recordingStatus.dateStarted, 
-      Opendatacam.recordingStatus.dateStarted,
-      Opendatacam.countingAreas
-    )).then((recording) => {
-      Opendatacam.recordingStatus.recordingId = recording.insertedId;
-    }, (error) => {
-      console.log(error);
-    })
+    // DBManager.insertRecording(new Recording(
+    //   Opendatacam.recordingStatus.dateStarted, 
+    //   Opendatacam.recordingStatus.dateStarted,
+    //   Opendatacam.countingAreas
+    // )).then((recording) => {
+    //   Opendatacam.recordingStatus.recordingId = recording.insertedId;
+    // }, (error) => {
+    //   console.log(error);
+    // })
   },
 
   stopRecording() {

@@ -15,8 +15,8 @@ const MjpegProxy = require('mjpeg-proxy').MjpegProxy;
 const intercept = require("intercept-stdout");
 const config = require('./config.json');
 
-const SIMULATION_MODE = process.env.NODE_ENV !== 'production'; // When not running on the Jetson
-// const SIMULATION_MODE = true;
+// const SIMULATION_MODE = process.env.NODE_ENV !== 'production'; // When not running on the Jetson
+const SIMULATION_MODE = true;
 
 const port = parseInt(process.env.PORT, 10) || 8080
 const dev = process.env.NODE_ENV !== 'production'
@@ -41,14 +41,14 @@ if(SIMULATION_MODE) {
 YOLO.init(SIMULATION_MODE);
 
 // Init connection to db
-DBManager.init().then(
-  () => {
-    console.log('Success init db')
-  },
-  err => {
-    console.error(err)
-  }
-)
+// DBManager.init().then(
+//   () => {
+//     console.log('Success init db')
+//   },
+//   err => {
+//     console.error(err)
+//   }
+// )
 
 // TODO Move the stdout code into it's own module
 var videoResolution = null;
