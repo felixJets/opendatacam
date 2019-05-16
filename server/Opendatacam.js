@@ -516,7 +516,8 @@ module.exports = {
             message = '';
             self.updateWithNewFrame(detectionsOfThisFrame.objects);
           } catch (error) {
-            console.log("Error with msgChunk send by YOLO, not valid JSON")
+            console.log("Error with message send by YOLO, not valid JSON")
+            message = '';
             console.log(message);
             console.log(error);
             // res.emit('close');
