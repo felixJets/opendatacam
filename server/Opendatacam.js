@@ -500,10 +500,10 @@ module.exports = {
         console.log('----')
         console.log('----')
         // Clean up as darknet does not send valid JSON
-        if(msgChunk.charAt(0) === ',' || msgChunk.charAt(0) === '[') {
-          console.log('Clean up chunk because of darknet sending invalid json');
-          msgChunk = msgChunk.substr(1);
-        }
+        // if(msgChunk.charAt(0) === ',' || msgChunk.charAt(0) === '[') {
+        //   console.log('Clean up chunk because of darknet sending invalid json');
+        //   msgChunk = msgChunk.substr(1);
+        // }
 
         message += msgChunk;
         let lastChar = message[message.length -1];
