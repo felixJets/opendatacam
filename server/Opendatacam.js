@@ -506,8 +506,8 @@ module.exports = {
         }
 
         message += msg;
-        let separatorIndex = message.indexOf(separator);
-        let isMessageComplete = separatorIndex != -1;
+        let lastChar = message[message.length -1];
+        let isMessageComplete = lastChar === separator;
 
         if(isMessageComplete && message.trim().length > 0) {
           try {

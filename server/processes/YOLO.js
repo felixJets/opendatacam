@@ -120,7 +120,16 @@ module.exports = {
       console.log("Got request on JSON Stream server started");
       JSONStreamRes = res;
       // Send one frame on the JSON stream to start things
-      JSONStreamRes.write(JSON.stringify(simulation30FPSDetectionsData.find((detection) => detection.frame_id === frameNb)));
+      let jsonStringMsg = JSON.stringify(simulation30FPSDetectionsData.find((detection) => detection.frame_id === frameNb));
+      console.log('----')
+      console.log('----')
+      console.log('----')
+      console.log('JSON Msg sent')
+      console.log('----')
+      console.log('----')
+      console.log('----')
+      console.log(jsonStringMsg)
+      JSONStreamRes.write(jsonStringMsg);
     }).listen(8070);
 
 
