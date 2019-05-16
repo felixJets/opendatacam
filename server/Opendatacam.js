@@ -482,7 +482,7 @@ module.exports = {
       var separator = "}"; // consider chunk complete if I see this char
 
       res.on('data', function(chunk) {
-        var msg = chunk.toString();
+        var msgChunk = chunk.toString();
         console.log('----')
         console.log('----')
         console.log('----')
@@ -500,18 +500,19 @@ module.exports = {
         console.log('----')
         console.log('----')
         // Clean up as darknet does not send valid JSON
-        if(msg.charAt(0) === ',' || msg.charAt(0) === '[') {
-          console.log('Clean up');
-          msg = msg.substr(1);
+        if(msgChunk.charAt(0) === ',' || msgChunk.charAt(0) === '[') {
+          console.log('Clean up chunk because of darknet sending invalid json');
+          msgChunk = msgChunk.substr(1);
         }
 
-        message += msg;
+        message += msgChunk;
         let lastChar = message[message.length -1];
         let isMessageComplete = lastChar === separator;
 
         if(isMessageComplete && message.trim().length > 0) {
           try {
-            var detectionsOfThisFrame = JSON.parse(msg);
+            console.log('Message complete, parse it')
+            var detectionsOfThisFrame = JSON.parse(message);
             message = '';
             self.updateWithNewFrame(detectionsOfThisFrame.objects);
           } catch (error) {
