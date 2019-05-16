@@ -491,7 +491,7 @@ module.exports = {
         console.log('----')
         console.log('----')
         console.log('----')
-        console.log(msg);
+        console.log(msgChunk);
         console.log('----')
         console.log('----')
         console.log('----')
@@ -516,8 +516,8 @@ module.exports = {
             message = '';
             self.updateWithNewFrame(detectionsOfThisFrame.objects);
           } catch (error) {
-            console.log("Error with msg send by YOLO, not valid JSON")
-            console.log(msg);
+            console.log("Error with msgChunk send by YOLO, not valid JSON")
+            console.log(message);
             console.log(error);
             // res.emit('close');
           }
