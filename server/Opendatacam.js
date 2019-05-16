@@ -480,8 +480,17 @@ module.exports = {
       console.log(`statusCode: ${res.statusCode}`)
       res.on('data', function(chunk) {
         var msg = chunk.toString();
+        console.log(msg);
+        console.log('----')
+        console.log('----')
+        console.log('----')
+        console.log('----')
+        console.log('----')
+        console.log('----')
+        console.log('----')
         // Clean up as darknet does not send valid JSON
         if(msg.charAt(0) === ',' || msg.charAt(0) === '[') {
+          console.log('Clean up');
           msg = msg.substr(1);
         }
 
