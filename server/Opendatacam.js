@@ -480,6 +480,14 @@ module.exports = {
       console.log(`statusCode: ${res.statusCode}`)
       res.on('data', function(chunk) {
         var msg = chunk.toString();
+        console.log('----')
+        console.log('----')
+        console.log('----')
+        console.log('----')
+        console.log('JSON Message received')
+        console.log('----')
+        console.log('----')
+        console.log('----')
         console.log(msg);
         console.log('----')
         console.log('----')

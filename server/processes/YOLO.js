@@ -138,7 +138,17 @@ module.exports = {
       timer = setInterval(() => {
         updateJPG();
         if(JSONStreamRes) {
-          JSONStreamRes.write(JSON.stringify(simulation30FPSDetectionsData.find((detection) => detection.frame_id === frameNb)));
+          let jsonStringMsg = JSON.stringify(simulation30FPSDetectionsData.find((detection) => detection.frame_id === frameNb));
+          console.log('----')
+          console.log('----')
+          console.log('----')
+          console.log('JSON Msg sent')
+          console.log('----')
+          console.log('----')
+          console.log('----')
+          console.log(jsonStringMsg)
+          JSONStreamRes.write(jsonStringMsg);
+          
         } else {
           console.log("JSONStream connexion not opened yet");
         }
